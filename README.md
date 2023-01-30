@@ -1,2 +1,32 @@
 # slack-ml-share-file
-Slack API Technical Guide for Machine Learning - Sharing Files
+
+## Slack APIによるプログラミング　機械学習への応用編
+
+Slack APIチュートリアル「NodeJSとSlack APIによるいまどきのネットワークプログラミング」の応用編として機械学習向けにアプリを公開する。
+
+### ファイルを共有する
+
+機械学習に関連する機能は、ファイルの内容を読み込み、それを変換して別の内容で保存する場合がよくある。このサンプルプログラムはSlackにテキストファイルをアップロードして、その内容を表示、ローカルフォルダーに保存する。
+
+#### 必要なライブラリをインストールする
+
+>$ pip install -r requirements.txt
+
+#### 環境変数を設定する
+
+- ファイルenv.tpl内のSLACK_BOT_TOKEN/SLACK_APP_TOKEN/SLACK_USER_TOKENに該当するURLを設定する
+- env.tplをenv.batに名前を変え、バッチを実行する
+  >$ ren env.tpl env.bat
+  >
+  >$ env.bat
+
+#### 共有したファイルの内容を表示する
+
+- アップロードしたテキストファイルの内容をコンソール画面に表示する
+- 起動方法
+
+  >$ python share_file.py
+
+- Slack入力欄の＋アイコンでテキストファイルをアップロードする
+- ファイルの内容がコンソール画面に表示されることを確認する
+- テキストファイルがローカルフォルダ(_temp)に保存されたことを確認する
