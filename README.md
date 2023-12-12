@@ -8,25 +8,43 @@ Slack APIチュートリアル「NodeJSとSlack APIによるいまどきのネ�
 
 機械学習に関連する機能は、ファイルの内容を読み込み、それを変換して別の内容で保存する場合がよくある。このサンプルプログラムはSlackにテキストファイルをアップロードして、その内容を表示、ローカルフォルダーに保存する。
 
-#### 必要なライブラリをインストールする
+#### 必要なパッケージをインストールする
 
->$ pip install -r requirements.txt
+コマンドライン上で次のコマンドを起動し、依存するPythonパッケージをインストールする。
+
+```bash
+pip install -r requirements.txt
+```
 
 #### 環境変数を設定する
 
-- ファイルenv.tpl内のSLACK_BOT_TOKEN/SLACK_APP_TOKEN/SLACK_USER_TOKENに該当するURLを設定する
-- env.tplをenv.batに名前を変え、バッチを実行する
-  >$ ren env.tpl env.bat
-  >
-  >$ env.bat
+本アプリを起動するには環境変数の設定が必要である。env.tplファイルをenv.batバッチファイルとしてコピーし、以下の環境変数を定義する。
+
+```bash
+copy env.tpl env.bat
+```
+
+|  変数名  |  説明  |
+| ---- | ---- |
+|  SLACK_BOT_TOKEN  | Botユーザーとして関連付けられたトークン。対象Slackワークスペースのアプリ設定 > [OAuth & Permissions] > [Bot User OAuth Token]から取得する。xoxb-で始まる文字列。 |
+|  SLACK_APP_TOKEN  | 全ての組織を横断できるアプリレベルトークン。対象Slackワークスペースのアプリ設定 > [Basic Information] > [App-Level Tokens]から取得する。xapp-で始まる文字列。 |
+|  SLACK_USER_TOKEN  | アプリをインストールまたは認証したユーザーに成り代わってAPIを呼び出すことができるトークン。対象Slackワークスペースのアプリ設定 > [OAuth & Permissions] > [User OAuth Token]から取得する。xoxp-で始まる文字列。 |
+|  LOCAL_FOLDER  | Slackにアップロードしたファイルを暫定的に保存するローカルフォルダーの名前 |
 
 #### 共有したファイルの内容を表示する
 
 - アップロードしたテキストファイルの内容をコンソール画面に表示する
 - 起動方法
 
-  >$ python share_file.py
+```bash
+env.bat
+python share_file.py
+```
 
-- Slack入力欄の＋アイコンでテキストファイルをアップロードする
+- Slack入力欄の「＋」アイコンでテキストファイルをアップロードする
 - ファイルの内容がコンソール画面に表示されることを確認する
 - テキストファイルがローカルフォルダ(_temp)に保存されたことを確認する
+
+### 更新履歴
+
+- 2023-02-01 初版
